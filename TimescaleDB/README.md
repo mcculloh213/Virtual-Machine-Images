@@ -78,15 +78,15 @@ This optional environment variable can be used to define another location for th
 
 > **Note**: on PostgreSQL 9.x, this variable is `POSTGRES_INITDB_XLOGDIR` (reflecting the changed name of the `--xlogdir` flag to `--waldir` in PostgreSQL 10+).
 
-#### POSTGRES_HOST_AUTH_METHOD
+#### `POSTGRES_HOST_AUTH_METHOD`
 
-This optional variable can be used to control the auth-method for host connections for all databases, all users, and all addresses. If unspecified then scram-sha-256 password authentication is used (in 14+; md5 in older releases). On an uninitialized database, this will populate pg_hba.conf via this approximate line:
+This optional variable can be used to control the auth-method for host connections for all databases, all users, and all addresses. If unspecified then scram-sha-256 password authentication is used (in 14+; md5 in older releases). On an uninitialized database, this will populate `pg_hba.conf` via this approximate line:
 
 ```bash
 echo "host all all all $POSTGRES_HOST_AUTH_METHOD" >> pg_hba.conf
 ```
 
-See the PostgreSQL documentation on pg_hba.conf for more information about possible values and their meanings.
+See the PostgreSQL documentation on `pg_hba.conf` for more information about possible values and their meanings.
 
 > **Note 1**: It is not recommended to use trust since it allows anyone to connect without a password, even if one is set (like via POSTGRES_PASSWORD). For more information see the PostgreSQL documentation on Trust Authentication.
 

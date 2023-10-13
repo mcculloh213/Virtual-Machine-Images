@@ -2,17 +2,25 @@ version: "3.8"
 services:
 
   db:
+    container_name: timescale-db
     build:
       context: .
       dockerfile: Dockerfile
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
+      - PGDATA=/var/lib/postgresql/data/pgdata
     ports:
       - 5432:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
   
   adminer:
+    container_name: timescale-adminer
     image: adminer
     restart: always
     ports:
       - 8080:8080
+
+volumes:
+  pgdata:
