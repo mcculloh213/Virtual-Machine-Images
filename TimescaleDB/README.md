@@ -123,7 +123,7 @@ To specify your own limits, use the `TS_TUNE_MEMORY` and `TS_TUNE_NUM_CPUS` envi
 $ docker run -d --name timescaledb -p 5432:5432 -e POSTGRES_PASSWORD=password -e TS_TUNE_MEMORY=4GB -e TS_TUNE_NUM_CPUS=4 timescale/timescaledb:latest-pg13
 ```
 
-To specify a maximum number of background workers, use the TS_TUNE_MAX_BG_WORKERS environment variable:
+To specify a maximum number of background workers, use the `TS_TUNE_MAX_BG_WORKERS` environment variable:
 
 ```bash
 $ docker run -d --name timescaledb -p 5432:5432 -e POSTGRES_PASSWORD=password -e TS_TUNE_MAX_BG_WORKERS=16 timescale/timescaledb:latest-pg13
