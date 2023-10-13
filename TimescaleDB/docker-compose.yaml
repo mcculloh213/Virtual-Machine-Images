@@ -24,3 +24,7 @@ services:
 
 volumes:
   pgdata:
+    name: timescale-pgdata
+    driver: local
+    driver_opts:
+      o: "size=10G"
