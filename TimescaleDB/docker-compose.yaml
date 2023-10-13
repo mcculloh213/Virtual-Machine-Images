@@ -6,8 +6,8 @@ services:
       context: .
       dockerfile: Dockerfile
     environment:
-      - POSTGRES_USER=e2e-admin
-      - POSTGRES_PASSWORD=passwordiest
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
     ports:
       - 5432:5432
   
