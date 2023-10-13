@@ -1,0 +1,18 @@
+version: "3.8"
+services:
+
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - POSTGRES_USER=e2e-admin
+      - POSTGRES_PASSWORD=passwordiest
+    ports:
+      - 5432:5432
+  
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
