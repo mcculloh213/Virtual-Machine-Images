@@ -5,4 +5,4 @@ LABEL maintainer="mccullough@endtoendinnovations.com"
 ENV POSTGRES_USER=postgres
 ENV POSGRES_PASSWORD=password
 
-COPY --chown=${POSTGRES_USER}:${POSTGRES_USER} ./docker-entrypoint-initdb.d/init-docker-db.sh /docker-entrypoint-initdb.d/
+COPY --chown=${POSTGRES_USER}:${POSTGRES_USER} ./docker-entrypoint-initdb.d/init-application-db.sh /docker-entrypoint-initdb.d/
