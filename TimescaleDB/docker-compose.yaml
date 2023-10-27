@@ -10,6 +10,9 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
       - PGDATA=/var/lib/postgresql/data/pgdata
+      - TEST_USER=user_test
+      - TEST_PASSWORD=password
+      - TEST_DATABASE=test
     restart: always
     ports:
       - 5432:5432
