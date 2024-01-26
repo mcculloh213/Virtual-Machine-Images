@@ -1,0 +1,46 @@
+# Docker Compose for cassia/updater service deployment
+#
+# This Compose file sets up the cassia/updater service with environment-specific
+# configurations such as MAC address, port bindings, and persistent volumes.
+#
+# Deployment Instructions:
+# 1. Ensure you have Docker and Docker Compose installed on your machine.
+# 2. Make the get-mac.sh script executable:
+#       chmod +x get-mac.sh
+# 3. Run the get-mac.sh script to set the MAC_ADDRESS environment variable:
+#       export MAC_ADDRESS=$(./get-mac.sh)
+# 4. Start the service using Docker Compose:
+#       docker-compose up -d
+# 5. To stop and remove the service, use:
+#       docker-compose down
+#
+# Note: The get-mac.sh script retrieves the MAC address of the first non-virtual
+# network interface. If you need to specify a different interface, modify the script
+# accordingly before running the export command.
+#
+version: "3.8"
+
+services:
+  cassia-ac:
+    image: cassia/updater
+    container_name: ac
+    restart: always
+    mac_address: ${MAC_ADDRESS}
+    ports:
+      - "80:80"         # API and Web access based on HTTP
+      - "443:443"       # API and Web access based on HTTPS
+      - "8001:8001"     # Remote SSH to container (laptop ~> 8001 ~> AC <~ 9999 <~ container)
+      - "8883:8883"     # Gateway-AC communication based on MQTT
+      - "9999:9999"     # Remote SSH to container (laptop ~> 8001 ~> AC <~ 9999 <~ container)
+      - "5246:5246/udp" # Gateway-AC communication based on CAPWAP (default port)
+      - "5247:5247/udp" # Gateway-AC communication based on CAPWAP (default port)
+      - "6246:6246/udp" # Gateway-AC communication based on CAPWAP (backup port)
+      - "6247:6247/udp" # Gateway-AC communication based on CAPWAP (backup port)
+    volumes:
+      - cassia-ac:/opt/cassia-ac
+
+volumes:
+  cassia-ac:
+    name: cassia-ac
+    driver: local
+    
