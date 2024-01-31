@@ -2,8 +2,9 @@ version: '3.8'
 
 services:
   mosquitto:
-    container_name: mosquitto-mqtt
     image: mcculloh213/mosquitto
+    container_name: mosquitto-mqtt
+    restart: always
     build:
       context: .
       dockerfile: Dockerfile
