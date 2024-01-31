@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  mosquitto:
+    container_name: mosquitto-mqtt
+    image: mcculloh213/mosquitto
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - ./passwds:/mosquitto/config/passwds
+      - mosquitto_data:/mosquitto/data
+      - mosquitto_log:/mosquitto/log
+
+volumes:
+  mosquitto_data:
+    name: mosquitto_data
+    driver: local
+  mosquitto_log:
+    name: mosquitto_log
+    driver: local
