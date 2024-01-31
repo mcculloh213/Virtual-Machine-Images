@@ -1,0 +1,17 @@
+# Source: https://github.com/motioneye-project/motioneye/blob/main/docker/docker-compose.yml
+# Date:   01/31/2024
+version: "3.8"
+services:
+  motioneye:
+    # ToDo: Change from unstable dev/edge to stable GitHub registry release and Docker registry release, once available
+    image: ghcr.io/motioneye-project/motioneye:edge  # https://github.com/motioneye-project/motioneye/pkgs/container/motioneye
+    ports:
+      - "8081:8081"
+      - "8765:8765"
+    volumes:
+      - etc_motioneye:/etc/motioneye
+      - var_lib_motioneye:/var/lib/motioneye
+
+volumes:
+  etc_motioneye:
+  var_lib_motioneye:
