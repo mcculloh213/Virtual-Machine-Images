@@ -14,4 +14,8 @@ services:
 
 volumes:
   etc_motioneye:
+    name: etc_motioneye
+    driver: local
   var_lib_motioneye:
+    name: var_lib_motioneye
+    driver: local
