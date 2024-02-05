@@ -27,7 +27,7 @@ services:
     restart: always
     mac_address: ${MAC_ADDRESS}
     ports:
-      - "80:80"         # API and Web access based on HTTP
+      - "8090:80"         # API and Web access based on HTTP
       - "443:443"       # API and Web access based on HTTPS
       - "8001:8001"     # Remote SSH to container (laptop ~> 8001 ~> AC <~ 9999 <~ container)
       - "8883:8883"     # Gateway-AC communication based on MQTT
